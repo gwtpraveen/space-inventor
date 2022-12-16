@@ -1,0 +1,45 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.bg {
+    background-image: url(../assets/background-black.png);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.main-ship {
+    width: fit-content;
+    position: absolute;
+    bottom: 1rem;
+    left: 00%;
+    z-index: 1;
+
+    .health {
+        position: relative;
+        width: 100%;
+        height: 10px;
+        background-color: rgb(216, 205, 152);
+        margin-top: 1rem;
+
+        span {
+            width: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgb(255, 0, 0);
+        }
+    }
+
+    .bullet {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+}
