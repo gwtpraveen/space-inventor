@@ -42,6 +42,8 @@ const moveMainShipRight = () => {
 const shootMainShip = () => {
     if (!mainShipFired) {
         mainShipBullet.style.display = "block";
+        let laserSound = new Audio("./assets/laser.wav");
+        laserSound.play();
         mainShipFired = true;
         bullY = mainShip.offsetTop;
         let bullX = mainShipX + SHIPWIDTH/2;
@@ -76,6 +78,25 @@ for (let i = 0; i < numberOfEnemiShips; i++) {
     enemiDivEl.append(enemiShipImageEle);
 }
 
+setInterval(() => {
+    // console.log(enemiDivEl.lastChild.getBoundingClientRect())
+    for (let i = 0; i < Math.floor(Math.random() * 10) + 1; i++) {
+        let randomnumber = Math.floor(Math.random() * numberOfEnemiShips);
+        let firedShip = document.querySelector(`.enemImg${randomnumber}`);
+        let details = firedShip.getBoundingClientRect();
+        console.log(details);
+        let enemiBul = document.createElement("img");
+        enemiBul.src = "./assets/alien_bullet.png";
+        enemiBul.classList.add("enemi-bul");
+        enemiBul.style.left = `${details.x + (details.width / 2)}px`;
+        enemiBul.style.top =  `${details.y + (details.height / 2)}px`;
+        enemiBul.addEventListener("animationend", () => {
+            bg.removeChild(enemiBul);
+        })
+        bg.append(enemiBul);
+    }
+}, 1800) 
+
 // listen for key press
 window.addEventListener("keydown", e => {
     if (e.code === "ArrowLeft") {
@@ -88,4 +109,4 @@ window.addEventListener("keydown", e => {
 })
 // setInterval(() => {
 //     moveMainShipLeft();
-// }, 75)
+// }, 75)             
