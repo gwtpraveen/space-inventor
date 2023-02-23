@@ -3,6 +3,7 @@ const mainShip = document.querySelector(".main-ship");
 const bg = document.querySelector(".bg");
 const mainShipBullet = document.querySelector(".main-ship-bullet");
 const enemiDivEl = document.querySelector(".enemies");
+const mainShipHealthBar = document.querySelector(".health span");
 
 const WIDTH = bg.clientWidth;
 const HEIGHT = bg.clientHeight;
@@ -10,7 +11,12 @@ const HEIGHT = bg.clientHeight;
 const SHIPWIDTH = 75;
 const SHIPHEIGHT = mainShip.clientHeight;
 const SHIPSPEED = 10;
+
+const FPS = 60;
+
 let numberOfEnemiShips = 30;
+let mainShipHealth = 100;
+
 
 let mainShipX = WIDTH/2;
 let bullY;
@@ -18,6 +24,7 @@ let bullY;
 let mainShipFired = false;
 
 mainShip.style.left = `${mainShipX}px`;
+mainShipHealthBar.style.width = `${mainShipHealth}%`;
 
 const moveMainShipLeft = () => {
     if (mainShipX - SHIPSPEED >= 0) {
@@ -97,6 +104,7 @@ setInterval(() => {
     }
 }, 1800) 
 
+
 // listen for key press
 window.addEventListener("keydown", e => {
     if (e.code === "ArrowLeft") {
@@ -107,6 +115,12 @@ window.addEventListener("keydown", e => {
         shootMainShip();
     }
 })
-// setInterval(() => {
-//     moveMainShipLeft();
-// }, 75)             
+         
+let lastTime = 0;
+
+const gameLoop = (timeStamp) => {
+    let deltaTime = timeStamp - lastTime;
+    lastTime = timeStamp;
+    requestAnimationFrame(gameLoop);
+};
+
