@@ -11,7 +11,7 @@ export default class Inputs {
                     break;
 
                 case "Space":
-                    console.log("shoot");
+                    ship.shoot();
                     break;
             }
         });
