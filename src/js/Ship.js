@@ -1,17 +1,17 @@
 import Bullet from "./Bullet";
 
 export default class Ship {
-    constructor(gameWidth, gameHeight) {
+    constructor(game) {
         this.Ship = new Image();
         this.Ship.src = "../assets/spaceship.png";
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
+        this.gameWidth = game.gameWidth;
+        this.gameHeight = game.gameHeight;
         this.health = 90;
         this.speed = 0;
         this.maxSpeed = 5;
         this.position = {
             x: 100,
-            y: gameHeight - (this.Ship.height + 30)
+            y: game.gameHeight - (this.Ship.height + 30)
         };
         this.numberOfBullets = 3;
         this.bullets = [];

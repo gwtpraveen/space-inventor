@@ -17,6 +17,10 @@ export default class EnemyShip {
         ctx.drawImage(this.enemyShip, this.position.x, this.position.y);
     };
 
+    collistion() {
+        
+    };
+
     update(deltaTime) {
         this.position.x += this.speed;
         if (this.position.x >= this.gameWidth - this.enemyShip.width || this.position.x <= 0) {
