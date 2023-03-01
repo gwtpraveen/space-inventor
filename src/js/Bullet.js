@@ -29,7 +29,6 @@ export default class Bullet {
     update(deltaTime) {
         this.position.y += this.speed;
         if (this.position.y <= 0 || this.position.y >= this.gameHeight) {
-            this.position.x = -100;
             this.speed = 0;
             this.destroyed = true;
         }        
